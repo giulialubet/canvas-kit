@@ -1,3 +1,4 @@
+export * from './aria-live';
 export * from './combobox';
 export * from './common';
 export * from './drawer';
