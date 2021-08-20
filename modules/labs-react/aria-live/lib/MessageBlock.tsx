@@ -9,7 +9,7 @@ interface MessageBlockProps {
 
 const AccessibleHide = styled('div')(accessibleHide);
 
-export const MessageBlock: React.FC<MessageBlockProps> = ({message, 'aria-live': ariaLive}) => (
+export const MessageBlock = ({message, 'aria-live': ariaLive}: MessageBlockProps) => (
   <AccessibleHide role="log" aria-live={ariaLive}>
     {message ? message : ''}
   </AccessibleHide>
