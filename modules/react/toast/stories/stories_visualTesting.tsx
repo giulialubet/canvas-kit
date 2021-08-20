@@ -1,20 +1,21 @@
 import React from 'react';
 
 import {colors} from '@workday/canvas-kit-react/tokens';
-import {StaticStates} from '@workday/canvas-kit-react/common';
+import {ContentDirection, StaticStates} from '@workday/canvas-kit-react/common';
 import {action} from '@storybook/addon-actions';
 import {exclamationCircleIcon} from '@workday/canvas-system-icons-web';
 import {Toast} from '@workday/canvas-kit-react/toast';
 
-import {ComponentStatesTable, withSnapshotsEnabled} from '../../../../utils/storybook';
+import {ComponentStatesTable} from '@workday/canvas-kit-labs-react/common';
+import {withSnapshotsEnabled} from '../../../../utils/storybook';
 
 export default withSnapshotsEnabled({
   title: 'Testing/React/Popups/Toast',
   component: Toast,
 });
 
-export const ToastStates = () => (
-  <StaticStates>
+const ToastStates = ({direction = ContentDirection.LTR}) => (
+  <StaticStates theme={{canvas: {direction}}}>
     <ComponentStatesTable
       rowProps={[
         {label: 'Default', props: {}},
@@ -50,3 +51,21 @@ export const ToastStates = () => (
     </ComponentStatesTable>
   </StaticStates>
 );
+
+export const ToastStatesLeftToRight = () => {
+  return (
+    <>
+      <h2>Left-To-Right Toast</h2>
+      <ToastStates />
+    </>
+  );
+};
+
+export const ToastStatesRightToLeft = () => {
+  return (
+    <>
+      <h2>Right-To-Left Toast</h2>
+      <ToastStates direction={ContentDirection.RTL} />
+    </>
+  );
+};

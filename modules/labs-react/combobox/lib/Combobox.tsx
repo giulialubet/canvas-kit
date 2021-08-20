@@ -256,7 +256,7 @@ const Combobox = ({
   );
 
   useEffect(() => {
-    if (initialValue) {
+    if (initialValue !== null && initialValue !== undefined) {
       setInputValue(initialValue);
     }
   }, [initialValue, setInputValue]);
@@ -466,6 +466,7 @@ const Combobox = ({
             toggled={undefined}
             onClick={resetSearchInput}
             onBlur={handleBlur}
+            type="button"
           />
         )}
         {showingAutocomplete && autocompleteItems && (

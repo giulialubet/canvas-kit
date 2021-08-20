@@ -2,8 +2,14 @@
 /** @jsx jsx */
 import {jsx} from '@emotion/core';
 import {StaticStates} from '@workday/canvas-kit-react/common';
-import {ComponentStatesTable, withSnapshotsEnabled} from '../../../../utils/storybook';
-import {uploadCloudIcon, extLinkIcon, userIcon} from '@workday/canvas-system-icons-web';
+import {ComponentStatesTable} from '@workday/canvas-kit-labs-react/common';
+import {withSnapshotsEnabled} from '../../../../utils/storybook';
+import {
+  uploadCloudIcon,
+  extLinkIcon,
+  userIcon,
+  taskContactIcon,
+} from '@workday/canvas-system-icons-web';
 import {Menu, MenuItem, MenuItemProps} from '../index';
 
 // @ts-ignore: Cannot find module error
@@ -43,7 +49,7 @@ const createMenuItems = (hasIcons?: boolean, isFocused?: boolean): StoryMenuItem
     {
       text: `Fourth Item (with a really really really long label)`,
       icon: hasIcons ? uploadCloudIcon : undefined,
-      secondaryIcon: hasIcons ? extLinkIcon : undefined,
+      secondaryIcon: hasIcons ? taskContactIcon : undefined,
     },
     {
       text: `Fifth Item (disabled)`,
@@ -91,10 +97,18 @@ export const MenuItemStates = () => (
         {label: 'Default', props: {}},
         {label: 'With Icons', props: {hasIcons: true}},
         {label: 'With Icons and Custom Width', props: {hasIcons: true, width: 200}},
+        {
+          label: 'With Icons and Custom Focus',
+          props: {hasIcons: true, initialSelectedItem: 3},
+        },
       ]}
       columnProps={[{label: 'Default', props: {}}]}
     >
-      {props => <Menu width={props.width}>{createMenuItems(props.hasIcons).map(buildItem)}</Menu>}
+      {props => (
+        <Menu width={props.width} initialSelectedItem={props.initialSelectedItem}>
+          {createMenuItems(props.hasIcons).map(buildItem)}
+        </Menu>
+      )}
     </ComponentStatesTable>
   </StaticStates>
 );

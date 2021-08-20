@@ -29,7 +29,7 @@ any questions about the update.
 
 ## Codemod
 
-We've introduced a [new codemod package](./modules/codemod) you can use to automatically update your
+We've introduced a [new codemod package](../../codemod) you can use to automatically update your
 code to work with a majority of the breaking changes in the migration from Canvas Kit v4 to v5.
 Simply run:
 
@@ -926,7 +926,7 @@ element that `inputRef` was applied to previously. Select and Select (Preview) d
 which element `ref` is forwarded to for that particular component.
 
 Input component prop interfaces no longer extend directly from their underlying element interface
-(e.g., `TextInputProps` no longer extends from `React.InputHTMLAttributes<HTMLInputElement>`).
+(e.g. `TextInputProps` no longer extends from `React.InputHTMLAttributes<HTMLInputElement>`).
 `createComponent` returns a component that determines the element interface via the `as` prop. This
 is why input component props no longer contain an element interface directly. If you extend from an
 input component prop interface, or have code that uses an input component prop interface and
